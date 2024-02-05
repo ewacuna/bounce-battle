@@ -2,13 +2,12 @@
 
 It's the eternal battle between light and dark.
 
+
+#### :sparkles: [See Demo](https://ewacuna.github.io/bounce-battle/)
+
 ## Development
 
-Run:
-
-```sh
-npm run dev
-```
+Run `npm install` and then `npm run dev` for a dev server. Navigate to `http://localhost:5173/`. The app will automatically reload if you change any of the source files.
 
 ## Credits
 
