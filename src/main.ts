@@ -155,6 +155,16 @@ const isBallCollidingWithSquare = (
   return { dx, dy };
 };
 
+ // Clears squares directly adjacent to the ball
+ const clearAroundBall = (x: number, y: number): void => {
+  let i = Math.floor(x / SQUARE_SIZE);
+  let j = Math.floor(y / SQUARE_SIZE);
+
+  if (i >= 0 && i < numSquaresX && j >= 0 && j < numSquaresY) {
+    squares[i][j] = LIGHT_COLOR;
+  }
+}
+
 // Main drawing function
 const draw = (): void => {
   context.clearRect(0, 0, canvas.width, canvas.height);
@@ -188,6 +198,12 @@ const draw = (): void => {
   y1 += dy1;
   x2 += dx2;
   y2 += dy2;
+
+   // Check for collision
+   if (Math.abs(x1 - x2) < SQUARE_SIZE && Math.abs(y1 - y2) < SQUARE_SIZE) {
+    clearAroundBall(x1, y1);
+    clearAroundBall(x2, y2);
+  }
 
   iteration++;
   if (iteration % 1_000 === 0) console.log("iteration", iteration);
